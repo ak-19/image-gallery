@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core/';
+import { Card, CardHeader, CardContent, Paper, Typography, CircularProgress } from '@material-ui/core/';
 import { useDispatch, useSelector } from 'react-redux';
+import ModalImage from "react-modal-image";
 import moment from 'moment';
 import { useParams } from 'react-router-dom';
 
 import { getPost } from '../../actions/posts';
-
-import './PostDetails.css'
 
 const PostDetils = () => {
     const { post, isLoading } = useSelector(({ data }) => data);
@@ -29,19 +28,19 @@ const PostDetils = () => {
     }
 
     return (
-        <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
-            <div className="card">
-                <div className="section">
-                    <Typography variant="h3" component="h2">{post.title}</Typography>
-                    <Typography gutterBottom variant="body1" component="p">{post.message}</Typography>
-                    <Typography variant="h6">Created by: {post.name}</Typography>
-                    <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
-                    <Divider style={{ margin: '20px 0' }} />
-                </div>
-                <div className="imageSection">
-                    <img className="details-image-style" src={post.selectedFile} alt={post.title} />
-                </div>
-            </div>
+        <Paper style={{ margin: '10px', padding: '20px', borderRadius: '15px' }} elevation={6}>
+            <Card sx={{ maxWidth: 345 }}>
+                <CardHeader
+                    title={post.title}
+                    subheader={moment(post.createdAt).fromNow() + ' by ' + post.name}
+                />
+                <ModalImage small={post.selectedFile} large={post.selectedFile} alt={post.title} width="500" />
+                <CardContent>
+                    <Typography variant="body2" color="secondary">
+                        {post.message}
+                    </Typography>
+                </CardContent>
+            </Card>
         </Paper>
     );
 };
