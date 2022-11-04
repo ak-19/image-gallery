@@ -19,9 +19,5 @@ app.use("/posts", postsRouter);
 app.use("/user", userRouter);
 
 connectDatabase()
-  .then(() => {
-    app.listen(port, () => console.log(`listening at ${port}`));
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
+  .then(() => app.listen(port, () => console.log(`listening at ${port}`)))
+  .catch((error) => console.log(error.message));
