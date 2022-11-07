@@ -35,7 +35,9 @@ const PostDetils = () => {
                     title={post.title}
                     subheader={moment(post.createdAt).fromNow() + ' by ' + post.name}
                 />
-                <ModalImage small={API.defaults.baseURL + '/' + post.thumb} large={API.defaults.baseURL + '/' + post.selectedFile} alt={post.title} width="500" />
+                <CardContent sx={{ margin: '20px' }}>
+                    <ModalImage small={API.defaults.baseURL + '/' + post.thumb} large={API.defaults.baseURL + '/' + post.selectedFile} alt={post.title} width="500" />
+                </CardContent>
                 <CardContent>
                     <Typography variant="body2" color="secondary">
                         {post.message}
