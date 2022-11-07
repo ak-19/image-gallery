@@ -40,6 +40,9 @@ export const getPostsSearch = async (req, res) => {
 export const createPosts = async (req, res) => {
   try {
     const post = req.body;
+    const { file } = req;
+    post.selectedFile = file.path;
+    post.thumb = file.path;
     const response = await Post.create({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
     res.status(201).json(response);
   } catch (error) {

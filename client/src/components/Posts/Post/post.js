@@ -5,6 +5,7 @@ import { Button, Card, CardActions, CardMedia, CardContent, Typography, Link } f
 import { Delete, Edit } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { deletePost } from '../../../actions/posts'
+import { API } from '../../../api';
 
 export default function Post({ post }) {
     const dispatch = useDispatch();
@@ -44,7 +45,7 @@ export default function Post({ post }) {
                 underline="none"
                 sx={{ textAlign: 'left' }}
             >
-                <CardMedia sx={{ paddingTop: '56.25%', backgroundColor: '#000000 .5' }} image={post.selectedFile} title={post.title} />
+                <CardMedia sx={{ paddingTop: '56.25%', backgroundColor: '#000000 .5' }} image={API.defaults.baseURL + '/' + post.thumb} title={post.title} />
             </Link>
             <CardContent sx={{ flexGrow: 1 }}>
                 <Typography variant="caption">{moment(post.createdAt).fromNow()}</Typography>

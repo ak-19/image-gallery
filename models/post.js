@@ -6,6 +6,7 @@ const postSchema = mongoose.Schema({
     name: String,
     creator: String,
     selectedFile: String,
+    thumb: String,
     createdAt: {
         type: Date,
         default: new Date()
