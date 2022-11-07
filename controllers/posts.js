@@ -45,7 +45,7 @@ export const createPosts = async (req, res) => {
     post.selectedFile = file.path;
 
     await sharp(file.path, { failOnError: false })
-      .resize(200, 120)
+      .resize(300, 200)
       .withMetadata()
       .toFile(file.path + '-thumb')
     post.thumb = file.path + '-thumb';
