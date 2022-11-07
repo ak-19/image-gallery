@@ -86,13 +86,9 @@ function Home() {
                 <Container sx={{ py: 8 }} maxWidth="md">
                     <Posts />
                 </Container>
-                <Grid item xs={12} sm={6} md={3}>
-                    {(!searchQuery) && (
-                        <Paper elevation={6} className="pagination">
-                            <Paginator page={page} />
-                        </Paper>
-                    )}
-                </Grid>
+                <Container maxWidth="md" sx={{ alignContent: 'right' }}>
+                    {(!searchQuery) && (<Paginator page={page} />)}
+                </Container>
             </main>
 
 
