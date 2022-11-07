@@ -56,7 +56,7 @@ const Navbar = () => {
               textDecoration: 'none',
               flexGrow: 1
             }}>
-            My image gallery
+            Image gallery
           </Typography>
           {user?.result ? (
             <>
