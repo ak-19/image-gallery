@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import sharp from 'sharp';
 import Post from "../models/post.js";
 
 export const getPost = async (req, res) => {
@@ -42,7 +43,13 @@ export const createPosts = async (req, res) => {
     const post = req.body;
     const { file } = req;
     post.selectedFile = file.path;
-    post.thumb = file.path;
+
+    await sharp(file.path, { failOnError: false })
+      .resize(200, 120)
+      .withMetadata()
+      .toFile(file.path + '-thumb')
+    post.thumb = file.path + '-thumb';
+
     const response = await Post.create({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
     res.status(201).json(response);
   } catch (error) {
