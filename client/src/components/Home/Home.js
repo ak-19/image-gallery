@@ -52,6 +52,7 @@ function Home() {
                         bgcolor: 'background.paper',
                         pt: 8,
                         pb: 6,
+                        paddingBottom: '0px'
                     }}
                 >
                     <Container maxWidth="sm">
@@ -62,13 +63,13 @@ function Home() {
                             color="text.primary"
                             gutterBottom
                         >
-                            My travel images
+                            My photos
                         </Typography>
                         <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                            Images recorded during my travels.
+                            My photo stories
                         </Typography>
                     </Container>
-                    <AppBar position="static" color="inherit">
+                    <Container maxWidth="md" sx={{ marginTop: '50px' }}>
                         <TextField
                             name="search"
                             variant="outlined"
@@ -78,8 +79,8 @@ function Home() {
                             onKeyPress={handleKeyPress}
                             onChange={(e) => { setSearch(e.target.value) }}>
                         </TextField>
-                        <Button onClick={searchPost} color="primary" varian="contained">Search images</Button>
-                    </AppBar>
+                        <Button onClick={searchPost} color="primary" varian="contained">Search</Button>
+                    </Container>
                 </Box>
 
                 <Container sx={{ py: 8 }} maxWidth="md">
