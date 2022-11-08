@@ -68,3 +68,11 @@ export const getPost = (id) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const setPost = (post) => async (dispatch) => {
+    try {
+        dispatch({ type: 'SET_POST', payload: { post } });
+    } catch (error) {
+        console.log(error);
+    }
+};

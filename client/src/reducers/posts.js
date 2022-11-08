@@ -12,6 +12,8 @@ const reducer = (data = { isLoading: true, posts: [] }, action) => {
             return { ...data, ...action.payload }
         case 'FETCH_POST':
             return { ...data, post: action.payload.post };
+        case 'SET_POST':
+            return { ...data, post: action.payload.post };
         case 'UPDATE':
             return { ...data, posts: data.posts.map((post) => (post._id === action.payload._id ? action.payload : post)) };
         case 'DELETE':

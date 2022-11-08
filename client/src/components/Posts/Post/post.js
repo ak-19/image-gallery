@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Card, CardActions, CardMedia, CardContent, Typography, Link } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../../../actions/posts'
+import { setPost, deletePost } from '../../../actions/posts'
 
 export default function Post({ post }) {
     const dispatch = useDispatch();
@@ -28,6 +28,7 @@ export default function Post({ post }) {
     }
 
     const editPost = () => {
+        dispatch(setPost(post))
         history(`/addimage`)
     }
 
