@@ -42,13 +42,16 @@ export const createPosts = async (req, res) => {
   try {
     const post = req.body;
     const { file } = req;
-    post.selectedFile = file.path;
+
+    const serverUrl = `${req.protocol}://${req.hostname}:${process.env.PORT}`
+
+    post.selectedFile = `${serverUrl}/${file.path}`;
 
     await sharp(file.path, { failOnError: false })
       .resize(300, 200)
       .withMetadata()
       .toFile(file.path + '-thumb')
-    post.thumb = file.path + '-thumb';
+    post.thumb = `${serverUrl}/${file.path}-thumb`;
 
     const response = await Post.create({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
     res.status(201).json(response);

@@ -6,7 +6,6 @@ import moment from 'moment';
 import { useParams } from 'react-router-dom';
 
 import { getPost } from '../../actions/posts';
-import { API } from '../../api/index';
 
 const PostDetils = () => {
     const { post, isLoading } = useSelector(({ data }) => data);
@@ -36,7 +35,7 @@ const PostDetils = () => {
                     subheader={moment(post.createdAt).fromNow() + ' by ' + post.name}
                 />
                 <CardContent sx={{ margin: '20px' }}>
-                    <ModalImage small={API.defaults.baseURL + '/' + post.thumb} large={API.defaults.baseURL + '/' + post.selectedFile} alt={post.title} width="500" />
+                    <ModalImage small={post.thumb} large={post.selectedFile} alt={post.title} width="500" />
                 </CardContent>
                 <CardContent>
                     <Typography variant="body2" color="secondary">
