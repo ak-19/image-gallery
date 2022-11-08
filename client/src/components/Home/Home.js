@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Container, Grid, Paper, TextField, Button, CssBaseline, ThemeProvider, createTheme, Box, Typography } from '@mui/material';
+import { Container, TextField, Button, CssBaseline, ThemeProvider, createTheme, Box, Typography } from '@mui/material';
 
 import Posts from '../Posts/posts';
 import { getPosts, getPostsSearch } from '../../actions/posts';
