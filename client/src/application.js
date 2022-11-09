@@ -12,7 +12,6 @@ import Footer from "./components/Footer/Footer";
 import Addimage from "./components/Addimage/Addimage";
 
 const Application = () => {
-  const user = JSON.parse(localStorage.getItem('profile'))
   return (
     <Router>
       <Container maxwidth="xl">
@@ -22,7 +21,7 @@ const Application = () => {
           <Route exact path="/posts" element={<Home />} />
           <Route exact path="/posts/search" element={<Home />} />
           <Route exact path="/addimage" element={<Addimage />} />
-          <Route exact path="/auth" element={!user ? <Auth /> : <Navigate to="/posts" />} />
+          <Route exact path="/auth" element={<Auth />} />
           <Route path="/posts/:id" element={<PostDetails />} />
         </Routes>
         <Footer />

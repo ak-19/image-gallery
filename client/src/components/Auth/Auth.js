@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { Button, createTheme, Typography, Grid, Avatar, Container, ThemeProvider, CssBaseline, Box } from "@mui/material";
@@ -14,6 +14,8 @@ const initialState = {
 }
 
 const Auth = () => {
+  const user = JSON.parse(localStorage.getItem('profile'))
+
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setSignUp] = useState(false);
   const [formData, setFormData] = useState(initialState)
@@ -22,15 +24,10 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (isSignUp) {
-      dispatch(signUp(formData, history))
-    }
-    else {
-      dispatch(signIn(formData, history))
-    }
-
+    if (isSignUp) dispatch(signUp(formData, history));
+    else dispatch(signIn(formData, history));
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value })
@@ -44,6 +41,13 @@ const Auth = () => {
   };
 
   const theme = createTheme();
+
+  useEffect(() => {
+    if (user) {
+      return history("/posts");
+    }
+  }, [history, user])
+
 
   return (
     <ThemeProvider theme={theme}>
