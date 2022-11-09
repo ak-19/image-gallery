@@ -32,7 +32,7 @@ const PostDetils = () => {
             <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
                     title={post.title}
-                    subheader={moment(post.createdAt).fromNow() + ' by ' + post.name}
+                    subheader={'Edited ' + moment(post.createdAt).fromNow() + ' by ' + post.name}
                 />
                 <CardContent sx={{ margin: '20px' }}>
                     <ModalImage small={post.thumb} large={post.selectedFile} alt={post.title} width="500" />

@@ -48,7 +48,7 @@ export default function Post({ post }) {
                 <CardMedia sx={{ paddingTop: '56.25%', backgroundColor: '#000000 .5' }} image={post.thumb} title={post.title} />
             </Link>
             <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="caption">{moment(post.createdAt).fromNow()}</Typography>
+                <Typography variant="caption">Edited {moment(post.createdAt).fromNow()}</Typography>
                 <Typography variant="caption"> by {post.name}</Typography>
                 <Typography color="textSecondary" variant="h4">{post.title} </Typography>
                 <Typography variant="body" color="textSecondary" component="p" >{post.message}</Typography>
