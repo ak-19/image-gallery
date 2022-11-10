@@ -15,7 +15,7 @@ const PostDetils = () => {
 
     useEffect(() => {
         dispatch(getPost(id));
-    }, [id]);
+    }, [id, dispatch]);
 
     if (!post) return null;
 
