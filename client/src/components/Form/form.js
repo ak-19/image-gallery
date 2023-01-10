@@ -16,7 +16,6 @@ export default function Form() {
     const dispatch = useDispatch();
 
     const clearFormData = () => {
-        console.log('...cleaning');
         setImageData({
             message: '', title: '', selectedFile: ''
         })
@@ -29,7 +28,6 @@ export default function Form() {
         e.preventDefault();
         const name = user?.result?.firstName;
         if (post) {
-            console.log('Form data check on update => ', imageData);
             dispatch(updatePost(post._id, imageData))
         } else {
             const form = new FormData();
@@ -37,7 +35,6 @@ export default function Form() {
             form.append('title', imageData.title);
             form.append('name', name)
             form.append('selectedFile', imageData.selectedFile);
-            console.log('Form check  on create => ', form);
             dispatch(createPost(form))
         }
         clearFormData()
@@ -45,7 +42,6 @@ export default function Form() {
 
     const fileInputChange = (e) => {
         if (e.target.files.length > 0) {
-            console.log('Test on file');
             setImageData({
                 ...imageData, selectedFile: e.target.files[0]
             })
