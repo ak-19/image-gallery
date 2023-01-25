@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { PhotoCamera } from '@mui/icons-material';
 import decode from 'jwt-decode';
+import { setPost } from '../../actions/posts';
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -18,6 +19,7 @@ const Navbar = () => {
   };
 
   const addNewImage = () => {
+    dispatch(setPost(undefined))
     history('/addimage');
   }
 
