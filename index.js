@@ -17,8 +17,8 @@ app.use(cors());
 
 app.use('/', express.static("public"));
 app.use('/images', express.static("images"));
-app.use("/posts", postsRouter);
-app.use("/user", userRouter);
+app.use("/api/posts", postsRouter);
+app.use("/api/user", userRouter);
 
 connectDatabase()
   .then(() => app.listen(port, () => console.log(`listening at ${port}`)))
